@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useLoadingAnimation } from '../../hooks/useLoadingAnimation';
 import Counter from '../ui/Counter';
-
+import '../../../src/App.css';
 import img1 from '../../assets/images/cidade-1-retangulo.jpg';
 import img2 from '../../assets/images/praia-4-retangulo.jpg';
 import img3 from '../../assets/images/cidade-2-retangulo.jpg';

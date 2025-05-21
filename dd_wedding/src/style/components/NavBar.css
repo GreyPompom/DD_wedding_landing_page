@@ -1,0 +1,26 @@
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  padding: 2em;
+}
+
+nav > div {
+  flex: 1;
+  font-family: "Timmons NY";
+  font-size: 36px;
+  font-weight: lighter;
+  color: var(--color-2);
+  text-transform: uppercase;
+}
+
+.site-info {
+  text-align: center;
+  font-size:12px;
+  
+}
+
+.menu {
+  text-align: right;
+}

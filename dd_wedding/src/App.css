@@ -1,10 +1,11 @@
 :root{
   --color-1: #49521D;
-  --color-2: #D8D9E3;
+  --color-2: #F5EFA8;
   --color-3: #fff;
   --color-4: #000;
   --color-5: #838657;
   --color-opaca:#49521D;
+  --color-button:#A2B26D;
 }
 
 * {
@@ -20,6 +21,7 @@ body,
   height: 100vh;
   overflow: hidden;
   background: var(--color-1);
+  overflow-y: auto;
 }
 
 .App {
@@ -41,7 +43,13 @@ img {
   height: 100vh;
   padding: 3em;
 }
-
+.content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  padding: 2rem;
+}
 .pre-loader {
   width: 200%;
   height: 100%;
@@ -93,7 +101,7 @@ img {
   top: -15px;
   width: 0%;
   height: 4px;
-  background: var(--color-4);
+  background: var(--color-3);
 }
 
 .hero-imgs {
@@ -113,30 +121,6 @@ img {
   z-index: 1;
 }
 
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  padding: 2em;
-}
-
-nav > div {
-  flex: 1;
-  font-family: "Timmons NY";
-  font-size: 36px;
-  font-weight: lighter;
-  color: var(--color-2);
-  text-transform: uppercase;
-}
-
-.site-info {
-  text-align: center;
-}
-
-.menu {
-  text-align: right;
-}
 
 .header {
   position: absolute;
@@ -145,7 +129,7 @@ nav > div {
   transform: translate(-20%, -50%);
 }
 
-h1 {
+h1.title-header {
   text-transform: uppercase;
   font-family: "PP Neue World";
   font-size: 10vw;

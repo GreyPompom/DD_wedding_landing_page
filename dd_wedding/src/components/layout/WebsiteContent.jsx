@@ -1,5 +1,6 @@
 import React, { forwardRef, useRef, useEffect } from 'react';
-
+import { gsap } from 'gsap';
+import NavBar from './NavBar';
 const WebsiteContent = forwardRef((props, ref) => {
   const headerRef = useRef(null);
   useEffect(() => {
@@ -7,29 +8,39 @@ const WebsiteContent = forwardRef((props, ref) => {
       ref.current = { headerRef };
     }
   }, [ref]);
+useEffect(() => {
+  const header = document.querySelector(".header");
+  const content = document.querySelector(".content");
+
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+
+    // Transição suave: aumenta opacidade do content e reduz escala do header
+    gsap.to(header, {
+      scale: Math.max(1 - scrollTop / 500, 0.8),
+      duration: 0.3,
+      ease: "power2.out"
+    });
+
+    gsap.to(content, {
+      opacity: Math.min(scrollTop / 200, 1),
+      y: scrollTop > 100 ? 0 : 50,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
+  window.addEventListener("scroll", onScroll);
+
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
 
   return (
     <>
       <div className="website-content">
-        <nav>
-          <div className="logo"><p>Logo</p></div>
-          <div className="site-info">
-            <p>(Photographer, creative director, filmmaker)</p>
-          </div>
-          <div className="menu"><p>Menu</p></div>
-        </nav>
+        <NavBar />
         <div className="header" ref={headerRef}>
-          <h1>Duda & Dani</h1>
-        </div>
-      </div>
-      <div className="content">
-        <div className="content-text">
-          <h2>Welcome to our wedding website!</h2>
-          <p>We are so excited to share this special day with you.</p>
-        </div>
-        <div className="content-images">
-          <img src="image1.jpg" alt="Wedding" />
-          <img src="image2.jpg" alt="Wedding" />
+          <h1 class="title-header">Duda & Dani</h1>
         </div>
       </div>
     </>
