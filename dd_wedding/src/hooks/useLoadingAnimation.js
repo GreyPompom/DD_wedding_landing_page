@@ -119,3 +119,23 @@ export const useLoadingAnimation = (refs) => {
     };
   }, [refs]);
 };
+
+const lastImg = document.querySelector('.hero-imgs > img:last-child');
+
+// Configuração inicial do CSS para evitar cortes
+gsap.set(lastImg, {
+  objectFit: 'contain',
+  width: '100%',
+  height: '100%'
+});
+
+// Animação parallax
+gsap.to(lastImg, {
+  y: '-20%', // Movimento vertical (ajuste conforme necessário)
+  scrollTrigger: {
+    trigger: '.hero-imgs',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: true
+  }
+});

@@ -5,14 +5,18 @@ import About from '../pages/About';
 import Cidade from '../pages/Cidade';
 import Praia from '../pages/Praia';
 
+import NavBar from '../components/layout/NavBar';
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/cidade" element={<Cidade />} />
-      <Route path="/praia" element={<Praia />} />
-    </Routes>
+   <>
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/cidade" element={<Cidade />} />
+        <Route path="/praia" element={<Praia />} />
+      </Routes>
+    </>
   );
 };
 

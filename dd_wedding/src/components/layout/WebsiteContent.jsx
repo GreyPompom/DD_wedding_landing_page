@@ -38,7 +38,7 @@ useEffect(() => {
   return (
     <>
       <div className="website-content">
-        <NavBar />
+        
         <div className="header" ref={headerRef}>
           <h1 class="title-header">Duda & Dani</h1>
         </div>

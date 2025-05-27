@@ -4,6 +4,7 @@ nav {
   width: 100%;
   display: flex;
   padding: 2em;
+  z-index: 1001;
 }
 
 nav > div {
@@ -18,9 +19,13 @@ nav > div {
 .site-info {
   text-align: center;
   font-size:12px;
-  
+
 }
 
 .menu {
   text-align: right;
+}
+.menu-container{
+    z-index: 1000;
+    position: relative;
 }

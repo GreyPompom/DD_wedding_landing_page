@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&family=Parisienne&family=Pinyon+Script&display=swap');
+
+
 :root{
   --color-1: #49521D;
   --color-2: #F5EFA8;
@@ -6,6 +10,7 @@
   --color-5: #838657;
   --color-opaca:#49521D;
   --color-button:#A2B26D;
+  --font-header: 'Gwendolyn', cursive;
 }
 
 * {
@@ -110,6 +115,16 @@ img {
   height: 100%;
   overflow: hidden;
   z-index: 0;
+  object-fit: cover
+}
+.hero-imgs > img:last-child {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  will-change: transform; /* Otimização de performance */
 }
 
 .website-content {
@@ -125,23 +140,24 @@ img {
 .header {
   position: absolute;
   top: 50%;
-  left: 33%;
-  transform: translate(-20%, -50%);
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 100%; 
+  text-align: center; 
 }
 
-h1.title-header {
-  text-transform: uppercase;
-  font-family: "PP Neue World";
-  font-size: 10vw;
-  font-weight: 100;
+.header h1.title-header {
+  font-family: var(--font-header);
+  font-size: 13vw;
+  font-weight: 800;
   color: var(--color-2);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  text-align: center;
-  align-items: center;
-  display: inline;
+  display: inline-block; 
+  margin: 0; 
+  line-height: 1.2; 
 }
 
-h1 span {
+.header h1 span {
   position: relative;
   top: 400px;
 }
