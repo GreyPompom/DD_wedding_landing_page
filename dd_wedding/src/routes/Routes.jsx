@@ -6,16 +6,38 @@ import Cidade from '../pages/Cidade';
 import Praia from '../pages/Praia';
 
 import NavBar from '../components/layout/NavBar';
+import PageTransition from '../components/ui/PageTransition';
 const AppRoutes = () => {
   return (
-   <>
-      <NavBar/>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cidade" element={<Cidade />} />
-        <Route path="/praia" element={<Praia />} />
-      </Routes>
+    <>
+      <NavBar />
+      <div className='app-routes'>
+
+          <Routes>
+            <Route path="/" element={
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            } />
+            <Route path="/cidade" element={
+              <PageTransition>
+                <Cidade />
+              </PageTransition>
+            } />
+             <Route path="/praia" element={
+              <PageTransition>
+                <Praia />
+              </PageTransition>
+            } />
+            <Route path="/about" element={
+              <PageTransition>
+                <About />
+              </PageTransition>
+            } />
+          </Routes>
+
+      </div>
+
     </>
   );
 };

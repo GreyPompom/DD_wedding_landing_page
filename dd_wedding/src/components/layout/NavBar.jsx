@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../../style/components/NavBar.css';
 import MenuOverlay from './Menu/MenuOverlay';
 import { useRef , useState} from 'react';
-
+import Logo from '../../assets/logo/logo-simbolo.png';
 const Navbar = () => {
    const menuToggleRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,12 +22,11 @@ const Navbar = () => {
           <div className="site-info">
             <p>wedding</p>
           </div>
-          <div className="logo"><Link to="/">Logo</Link></div>
+          <div className="logo"><a href='/'>Duda & Dani</a> </div>
         </nav>
         <MenuOverlay 
           isOpen={isMenuOpen} 
           onToggle={toggleMenu}
-          
           menuToggleRef={menuToggleRef}/>
       </div>
     </>

@@ -1,0 +1,16 @@
+.page-praia {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.album-content {
+  position: relative;
+  z-index: 2;
+  background: var(--color-1);
+  padding: 4rem 0;
+}
+
+/* Adicione isso se quiser um espaçamento maior após o hero */
+.praia-hero-wrapper {
+  margin-bottom: 4rem;
+}

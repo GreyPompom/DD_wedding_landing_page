@@ -6,26 +6,53 @@ nav {
   padding: 2em;
   z-index: 1001;
 }
-
-nav > div {
+/*"Barlow Condensed"*/
+nav>div {
   flex: 1;
-  font-family: "Timmons NY";
+  font-family: var(--font-header);
   font-size: 36px;
   font-weight: lighter;
-  color: var(--color-2);
-  text-transform: uppercase;
+  color: var(--color-3);
+  font-weight: 600;
+}
+nav .menu-toggle #menu-close,
+nav .menu-toggle #menu-open {
+  font-weight: 600;
+  transition: color 0.3s ease-in-out;
 }
 
+nav .menu-toggle #menu-open {
+  color: var(--color-3);
+}
+
+nav .menu-toggle:hover #menu-open,
+nav .menu-toggle:hover #menu-close {
+  color: var(--color-2);
+}
 .site-info {
   text-align: center;
-  font-size:12px;
+  font-size: 18px;
+  display: none;
 
+}
+
+.logo{
+  font-family:'Gwendolyn', cursive;
+  font-size: 28px;
+  text-align: right;
+} 
+.logo a  {
+  color: var(--color-3);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .menu {
   text-align: right;
+  font-weight: 600;
 }
-.menu-container{
-    z-index: 1000;
-    position: relative;
+
+.menu-container {
+  z-index: 1000;
+  position: relative;
 }

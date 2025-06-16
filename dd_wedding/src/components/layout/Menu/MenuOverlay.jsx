@@ -1,14 +1,24 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import '../../../style/components/MenuOverlay.css';
+import imageMenuDefault from '../../../assets/images/menu/menu-default.jpg';
+import imagePraia from '../../../assets/images/menu/menu-praia.jpg';
+import imageCidade from '../../../assets/images/menu/menu-cidade.jpg';
+import imageAbout from '../../../assets/images/menu/menu-about-us.jpg';
+
 const MenuOverlay = ({ isOpen, containerRef, menuToggleRef }) => {
   const menuOverlayRef = useRef(null);
   const menuContentRef = useRef(null);
   const menuPreviewImgRef = useRef(null);
   const isAnimatingRef = useRef(false);
+  const menuImages = {
+    praia: imagePraia,
+    cidade: imageCidade,
+    about: imageAbout
+  };
 
   useEffect(() => {
-    const container =document.querySelector('.hero');
+    const container = document.querySelector('.routes');
     const menuToggle = menuToggleRef.current;
     const menuOverlay = menuOverlayRef.current;
     const menuContent = menuContentRef.current;
@@ -18,21 +28,14 @@ const MenuOverlay = ({ isOpen, containerRef, menuToggleRef }) => {
     console.log(isOpen)
     if (!menuToggle || !menuOverlay || !menuContent || !menuPreviewImg) return;
 
-    const cleanupPreviewImages = () => {
-      const previewImages = menuPreviewImg.querySelectorAll("img");
-      if (previewImages.length > 3) {
-        for (let i = 0; i < previewImages.length - 3; i++) {
-          menuPreviewImg.removeChild(previewImages[i]);
-        }
-      }
-    };
-
-    const resetPreviewImage = () => {
-      menuPreviewImg.innerHTML = "";
-      const defaultPreviewImg = document.createElement("img");
-      defaultPreviewImg.src = "/img-1.jpg";
-      menuPreviewImg.appendChild(defaultPreviewImg);
-    };
+    // const cleanupPreviewImages = () => {
+    //   const previewImages = menuPreviewImg.querySelectorAll("img");
+    //   if (previewImages.length > 3) {
+    //     for (let i = 0; i < previewImages.length - 3; i++) {
+    //       menuPreviewImg.removeChild(previewImages[i]);
+    //     }
+    //   }
+    // };
 
     const animateMenuToggle = (isOpening) => {
       const open = document.querySelector("p#menu-open");
@@ -147,42 +150,33 @@ const MenuOverlay = ({ isOpen, containerRef, menuToggleRef }) => {
       else closeMenu();
     };
 
-    // Adiciona event listeners
     menuToggle.addEventListener("click", handleToggleClick);
 
-    menuLinks.forEach((link) => {
+     menuLinks.forEach((link) => {
       link.addEventListener("mouseover", () => {
         if (!isOpen || isAnimatingRef.current) return;
 
-        const imgSrc = link.getAttribute("data-img");
-        if (!imgSrc) return;
+        const menuKey = link.getAttribute('data-menu');
+        if (!menuKey || !menuImages[menuKey]) return;
 
-        const previewImages = menuPreviewImg.querySelectorAll("img");
-        if (
-          previewImages.length > 0 &&
-          previewImages[previewImages.length - 1].src.endsWith(imgSrc)
-        )
-          return;
-
-        const newPreviewImg = document.createElement("img");
-        newPreviewImg.src = imgSrc;
-        newPreviewImg.style.opacity = "0";
-        newPreviewImg.style.transform = "scale(1.25) rotate(10deg)";
-
-        menuPreviewImg.appendChild(newPreviewImg);
-        cleanupPreviewImages();
-
-        gsap.to(newPreviewImg, {
-          opacity: 1,
-          scale: 1,
-          rotation: 0,
-          duration: 0.75,
-          ease: "power2.out",
-        });
+        const imageBox = menuPreviewImg.querySelector('.image-box');
+        if (imageBox) {
+          gsap.to(imageBox, {
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => {
+              imageBox.src = menuImages[menuKey];
+              gsap.to(imageBox, {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out"
+              });
+            }
+          });
+        }
       });
     });
 
-    // Cleanup function
     return () => {
       menuToggle.removeEventListener("click", handleToggleClick);
       menuLinks.forEach(link => {
@@ -190,29 +184,29 @@ const MenuOverlay = ({ isOpen, containerRef, menuToggleRef }) => {
       });
     };
   }, [isOpen, containerRef, menuToggleRef]);
-
   return (
     <div className="menu-overlay" ref={menuOverlayRef}>
       <div className="menu-content" ref={menuContentRef}>
         <div className="menu-items">
           <div className="col-lg">
             <div className="menu-preview-img" ref={menuPreviewImgRef}>
-              <img src="/img-1.jpg" alt="" />
+               <img 
+                className="image-box" 
+                src={imageMenuDefault} 
+                alt="Menu Preview" 
+              />
             </div>
           </div>
           <div className="col-sm">
             <div className="menu-links">
-              <div className="link">
-                <a href="#" data-img="/img-1.jpg">Visions</a>
+             <div className="link">
+                <a href="/praia" data-menu="praia">Praia</a>
               </div>
               <div className="link">
-                <a href="#" data-img="/img-2.jpg">Core</a>
+                <a href="/cidade" data-menu="cidade">Cidade</a>
               </div>
               <div className="link">
-                <a href="#" data-img="/img-3.jpg">Signals</a>
-              </div>
-              <div className="link">
-                <a href="#" data-img="/img-4.jpg">Connect</a>
+                <a href="/about" data-menu="about">About Us</a>
               </div>
             </div>
 
@@ -225,12 +219,9 @@ const MenuOverlay = ({ isOpen, containerRef, menuToggleRef }) => {
           </div>
         </div>
         <div className="menu-footer">
-          <div className="col-lg">
-            <a href="#">Run Sequence</a>
-          </div>
+
           <div className="col-sm">
-            <a href="#">Origin</a>
-            <a href="#">Join Signal</a>
+            <a href="/">Home</a>
           </div>
         </div>
       </div>

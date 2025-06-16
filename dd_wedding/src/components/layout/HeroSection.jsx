@@ -4,11 +4,11 @@ import Counter from '../ui/Counter';
 import '../../../src/App.css';
 import img1 from '../../assets/images/hero/cidade-1-retangulo.jpg';
 import img2 from '../../assets/images/hero/praia-4-retangulo.jpg';
-import img3 from '../../assets/images/hero/cidade-2-retangulo.jpg';
+import img3 from '../../assets/images/hero/teatro-1-retangulo.jpg';
 import img4 from '../../assets/images/hero/praia-5-retangulo.jpg';
 import img5 from '../../assets/images/hero/praia-7-retangulo.jpg';
 import img6 from '../../assets/images/hero/praia-8-retangulo.jpg';
-import img7 from '../../assets/images/hero/teatro-1-retangulo.jpg';
+import img7 from '../../assets/images/hero/cidade-2-retangulo.jpg';
 
 const images = [img1, img2, img3, img4, img5, img6, img7];
 
