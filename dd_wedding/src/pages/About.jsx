@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
+
 import '../style/pages/AboutUs.css';
 
 gsap.registerPlugin(SplitText);
