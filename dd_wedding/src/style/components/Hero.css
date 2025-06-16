@@ -1,0 +1,63 @@
+.hero-praia {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color) ;/* Cor de fundo suave */
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 8vw;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-1);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.hero-letter {
+  will-change: transform, opacity; /* Otimização de performance */
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #666;
+  margin-top: 1.5rem;
+  opacity: 0.8;
+}
+
+/* Efeito de divisor opcional */
+.hero-praia::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background-color: rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 12vw;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+}

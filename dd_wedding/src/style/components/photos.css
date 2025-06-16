@@ -1,0 +1,42 @@
+.page-photos {
+  width: 100%;
+  max-width: 1200px; /* Largura máxima do container */
+  margin: 0 auto; /* Centraliza o container */
+  display: flex;
+  gap: 1em; /* Espaçamento entre colunas */
+  padding: 0 1em; /* Margens laterais */
+  margin-bottom: 10em;
+  justify-content: center; 
+  background-color: var(--background-color);/* Garante centralização extra */
+}
+
+.photos-col {
+  flex: 1; /* Faz com que as colunas dividam o espaço igualmente */
+  max-width: calc(33.333% - 1em); /* Calcula largura considerando o gap */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /* Espaçamento entre imagens */
+}
+
+.page-photos img {
+  width: 100%; /* Faz a imagem ocupar toda a largura da coluna */
+  height: auto; /* Altura automática mantendo proporção */
+  max-height: 600px; /* Altura máxima */
+  object-fit: cover; /* Mantém proporção cobrindo o espaço */
+}
+
+@media (max-width: 900px) {
+  .page-photos {
+    flex-direction: column;
+    max-width: 100%;
+    padding: 0 0.5em;
+  }
+  
+  .photos-col {
+    max-width: 100%; /* Em mobile ocupa toda a largura */
+  }
+  
+  .page-photos img {
+    max-height: 500px; /* Ajuste para mobile */
+  }
+}
