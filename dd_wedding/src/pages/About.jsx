@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
-import '../../src/style/aboutUs.css';
+import '../style/pages/AboutUs.css';
 
 gsap.registerPlugin(SplitText);
 import Perfil_mih from '../../src/assets/images/perfil/perfil-mih.jpg';
